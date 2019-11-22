@@ -43,9 +43,6 @@ public class Pedido extends Lanche {
 		}
 		
 		public Pedido build() throws Exception {
-			if(pedido.bebida == null) {
-				throw new Exception("Bebida não informada");
-			}
 			if(pedido.comida == null) {
 				throw new Exception("Comida não informada");
 			}
@@ -63,7 +60,7 @@ public class Pedido extends Lanche {
 
 	public String getBebida() {
 		if(bebida == null) {
-			return "null";
+			return "sem bebida";
 		}
 		return bebida.getTitulo();
 	}
