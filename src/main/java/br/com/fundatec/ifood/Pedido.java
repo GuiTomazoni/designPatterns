@@ -1,9 +1,10 @@
 package br.com.fundatec.ifood;
 
-public class Pedido extends Lanche {
+import br.com.fundatec.factory.comida.Comida;
+
+public class Pedido {
 
 	private Bebida bebida;
-	private Comida comida;
 	private Pagamento pagamento;
 	private TaxaDeEntrega taxaDeEntrega;
 
@@ -27,11 +28,6 @@ public class Pedido extends Lanche {
 			return this;
 		}
 		
-		public Builder comComida(Comida comida) {
-			pedido.comida = comida;
-			return this;
-		}
-		
 		public Builder Pagamento(Pagamento pagamento) {
 			pedido.pagamento = pagamento;
 			return this;
@@ -43,9 +39,7 @@ public class Pedido extends Lanche {
 		}
 		
 		public Pedido build() throws Exception {
-			if(pedido.comida == null) {
-				throw new Exception("Comida não informada");
-			}
+			
 			if(pedido.pagamento == null) {
 				throw new Exception("Pagamento não informado");
 			}
@@ -55,7 +49,6 @@ public class Pedido extends Lanche {
 			return pedido;
 		}
 	}
-	
 	
 
 	public String getBebida() {
@@ -67,17 +60,6 @@ public class Pedido extends Lanche {
 
 	public void setBebida(Bebida bebida) {
 		this.bebida = bebida;
-	}
-
-	public String getComida() {
-		if(comida == null) {
-			return "null";
-		}
-		return comida.getTitulo();
-	}
-
-	public void setComida(Comida comida) {
-		this.comida = comida;
 	}
 
 	public String getPagamento() {
@@ -102,23 +84,4 @@ public class Pedido extends Lanche {
 		this.taxaDeEntrega = taxaDeEntrega;
 	}
 
-	@Override
-	public void receberPedido() {
-		System.out.println("Recebendo o pedido");
-	}
-
-	@Override
-	public void preparar() {
-		System.out.println("Preparando Pedido");
-	}
-
-	@Override
-	public void embalar() {
-		System.out.println("Embalando para não esfriar");
-	}
-
-	@Override
-	public void entregar() {
-		System.out.println("Entregador saiu para entrega");
-	}
 }
